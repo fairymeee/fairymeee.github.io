@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fairymeee.github.io/"/>
-  <updated>2018-05-23T06:53:26.000Z</updated>
+  <updated>2018-06-07T09:27:24.000Z</updated>
   <id>https://fairymeee.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决Redis连接异常</title>
+    <link href="https://fairymeee.github.io/2018/06/07/%E8%A7%A3%E5%86%B3Redis%E8%BF%9E%E6%8E%A5%E5%BC%82%E5%B8%B8/"/>
+    <id>https://fairymeee.github.io/2018/06/07/解决Redis连接异常/</id>
+    <published>2018-06-07T08:25:08.000Z</published>
+    <updated>2018-06-07T09:27:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>重新部署项目后，后台服务只要用到了Redis的全都报错，不知道哪里改动了。</p><p><strong>报错代码</strong>：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool</span><br><span class="line">...</span><br><span class="line">redis.clients.jedis.exceptions.JedisDataException: ERR Client sent AUTH, but no password is set</span><br></pre></td></tr></table></figure><p>解决办法：</p><ol><li>进入redis容器(或服务器上)</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it my-redis /bin/bash</span><br></pre></td></tr></table></figure><ol start="2"><li>设置密码</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli</span><br><span class="line">127.0.0.1:6379&gt; CONFIG SET requirepass &quot;123456&quot;</span><br></pre></td></tr></table></figure><ol start="3"><li>修改服务配置</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.redis.password=123456</span><br></pre></td></tr></table></figure><ol start="4"><li>重启后台服务</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;重新部署项目后，后台服务只要用到了Redis的全都报错，不知道哪里改动了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;报错代码&lt;/strong&gt;：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre
+      
+    
+    </summary>
+    
+      <category term="BUG" scheme="https://fairymeee.github.io/categories/BUG/"/>
+    
+    
+      <category term="Redis" scheme="https://fairymeee.github.io/tags/Redis/"/>
+    
+      <category term="Spring boot" scheme="https://fairymeee.github.io/tags/Spring-boot/"/>
+    
+  </entry>
   
   <entry>
     <title>NodeJS整合CAS</title>

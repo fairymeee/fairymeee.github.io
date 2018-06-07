@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://fairymeee.github.io/2018/06/07/%E8%A7%A3%E5%86%B3Redis%E8%BF%9E%E6%8E%A5%E5%BC%82%E5%B8%B8/</loc>
+    <lastmod>2018-06-07T09:27:24.000Z</lastmod>
+    <data>
+        <display>
+        <title>解决Redis连接异常</title>
+        <pubTime>2018-06-07T08:25:08.000Z</pubTime>
+        
+        <tag>Redis</tag>
+         
+        <tag>Spring boot</tag>
+         
+         
+           
+             
+              <breadCrumb title="BUG" url="https://fairymeee.github.io/categories/BUG/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://fairymeee.github.io/2018/05/23/NodeJS%E6%95%B4%E5%90%88CAS/</loc>
     <lastmod>2018-05-23T06:53:26.000Z</lastmod>
     <data>
@@ -46,6 +68,26 @@
 
     
   <url>
+    <loc>https://fairymeee.github.io/2018/05/07/Ubuntu%E5%AE%89%E8%A3%85RabbitMQ/</loc>
+    <lastmod>2018-05-22T12:04:41.000Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu安装RabbitMQ</title>
+        <pubTime>2018-05-07T14:33:52.000Z</pubTime>
+        
+        <tag>RabbitMQ</tag>
+         
+         
+           
+             
+              <breadCrumb title="AMQP" url="https://fairymeee.github.io/categories/AMQP/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://fairymeee.github.io/2018/05/07/Ubuntu%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2018-05-22T12:04:41.000Z</lastmod>
     <data>
@@ -61,26 +103,6 @@
            
              
               <breadCrumb title="Ubuntu" url="https://fairymeee.github.io/categories/Ubuntu/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://fairymeee.github.io/2018/05/07/Ubuntu%E5%AE%89%E8%A3%85RabbitMQ/</loc>
-    <lastmod>2018-05-22T12:04:41.000Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu安装RabbitMQ</title>
-        <pubTime>2018-05-07T14:33:52.000Z</pubTime>
-        
-        <tag>RabbitMQ</tag>
-         
-         
-           
-             
-              <breadCrumb title="AMQP" url="https://fairymeee.github.io/categories/AMQP/"/>
           
         </display>
     </data>

@@ -133,7 +133,7 @@
 
 
 
-  <meta name="keywords" content="Java, Go" />
+  <meta name="keywords" content="Redis,Spring boot," />
 
 
 
@@ -146,15 +146,18 @@
 
 
 
-<meta name="keywords" content="blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的故事都是关于你啊">
-<meta property="og:url" content="https://fairymeee.github.io/about/index.html">
+<meta name="description" content="重新部署项目后，后台服务只要用到了Redis的全都报错，不知道哪里改动了。 报错代码： 123redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool...redis.clients.jedis.exceptions.JedisDataException: ERR">
+<meta name="keywords" content="Redis,Spring boot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决Redis连接异常">
+<meta property="og:url" content="https://fairymeee.github.io/2018/06/07/解决Redis连接异常/index.html">
 <meta property="og:site_name" content="fairymeee">
+<meta property="og:description" content="重新部署项目后，后台服务只要用到了Redis的全都报错，不知道哪里改动了。 报错代码： 123redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool...redis.clients.jedis.exceptions.JedisDataException: ERR">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T12:04:41.000Z">
+<meta property="og:updated_time" content="2018-06-07T09:27:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的故事都是关于你啊">
+<meta name="twitter:title" content="解决Redis连接异常">
+<meta name="twitter:description" content="重新部署项目后，后台服务只要用到了Redis的全都报错，不知道哪里改动了。 报错代码： 123redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool...redis.clients.jedis.exceptions.JedisDataException: ERR">
 
 
 
@@ -184,13 +187,13 @@
 
 
 
-  <link rel="canonical" href="https://fairymeee.github.io/about/"/>
+  <link rel="canonical" href="https://fairymeee.github.io/2018/06/07/解决Redis连接异常/"/>
 
 
 
 
 
-  <title>我的故事都是关于你啊 | fairymeee</title>
+  <title>解决Redis连接异常 | fairymeee</title>
   
 
 
@@ -351,33 +354,261 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fairymeee.github.io/2018/06/07/解决Redis连接异常/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fairymeee">
+      <meta itemprop="description" content="走好自己的路，不要停，也别着急！">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fairymeee">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h2 class="post-title" itemprop="name headline">我的故事都是关于你啊</h2>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body han-init-context">
         
         
+          <h2 class="post-title" itemprop="name headline">解决Redis连接异常</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-07T16:25:08+08:00">
+                2018-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BUG/" itemprop="url" rel="index">
+                    <span itemprop="name">BUG</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/07/解决Redis连接异常/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/07/解决Redis连接异常/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/06/07/解决Redis连接异常/" class="leancloud_visitors" data-flag-title="解决Redis连接异常">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  124
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
       
       
+
+      
+        <p>重新部署项目后，后台服务只要用到了Redis的全都报错，不知道哪里改动了。</p>
+<p><strong>报错代码</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool</span><br><span class="line">...</span><br><span class="line">redis.clients.jedis.exceptions.JedisDataException: ERR Client sent AUTH, but no password is set</span><br></pre></td></tr></table></figure>
+<p>解决办法：</p>
+<ol>
+<li>进入redis容器(或服务器上)</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it my-redis /bin/bash</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>设置密码</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli</span><br><span class="line">127.0.0.1:6379&gt; CONFIG SET requirepass &quot;123456&quot;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>修改服务配置</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.redis.password=123456</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>重启后台服务</li>
+</ol>
+
       
     </div>
     
     
     
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+
+      
+    </div>
+    <div>
+      
+        
+
+      
+    </div>
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    fairymeee
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://fairymeee.github.io/2018/06/07/解决Redis连接异常/" title="解决Redis连接异常">https://fairymeee.github.io/2018/06/07/解决Redis连接异常/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+          
+            <a href="/tags/Spring-boot/" rel="tag"><i class="fa fa-tag"></i> Spring boot</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/23/NodeJS整合CAS/" rel="next" title="NodeJS整合CAS">
+                <i class="fa fa-chevron-left"></i> NodeJS整合CAS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -386,6 +617,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -729,6 +971,30 @@
       </style>
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: '解决Redis连接异常', 
+            owner: 'fairymeee',
+            repo: 'fairymeee.github.io',
+            
+            lang: "en" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '3a06288c0da78e97ce7462da64c35186e3e92fd8',
+            
+                client_id: '978ccb782b3fcbe5dff5'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
