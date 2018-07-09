@@ -4,11 +4,11 @@
 
     
   <url>
-    <loc>https://fairymeee.github.io/2018/07/06/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%9AGogs+Jenkins%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%87%E4%BB%B6/</loc>
-    <lastmod>2018-07-09T09:10:12.000Z</lastmod>
+    <loc>https://fairymeee.github.io/2018/07/06/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%9AGogs+Jenkins%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5/</loc>
+    <lastmod>2018-07-09T09:22:36.000Z</lastmod>
     <data>
         <display>
-        <title>持续集成：Gogs+Jenkins同步远程服务器文件</title>
+        <title>持续集成：Gogs+Jenkins远程服务器文件同步</title>
         <pubTime>2018-07-06T03:48:39.000Z</pubTime>
         
         <tag>Gogs</tag>
@@ -20,7 +20,7 @@
          
            
              
-              <breadCrumb title="CI" url="https://fairymeee.github.io/categories/CI/"/>
+              <breadCrumb title="持续集成CI" url="https://fairymeee.github.io/categories/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90CI/"/>
           
         </display>
     </data>

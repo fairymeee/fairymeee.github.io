@@ -133,7 +133,7 @@
 
 
 
-  <meta name="keywords" content="Java, Go" />
+  <meta name="keywords" content="Gogs,Jenkins,CI," />
 
 
 
@@ -146,14 +146,31 @@
 
 
 
-<meta name="keywords" content="blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="fairymeee">
-<meta property="og:url" content="https://fairymeee.github.io/categories/CI/index.html">
+<meta name="description" content="1. Gogs配置1.1 仓库设置（仓库管理员） 1.2 添加Web钩子 1.3 Web钩子配置  推送地址：http://[jenkins-server]/gogs-webhook/?job=[jenkins的job名称] 密钥文本：jenkins的job需要配置密钥才能连接  2. Jenkins配置2.1 安装插件 Gogs plugin Publish Over SSH   系统管理-&amp;g">
+<meta name="keywords" content="Gogs,Jenkins,CI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="持续集成：Gogs+Jenkins远程服务器文件同步">
+<meta property="og:url" content="https://fairymeee.github.io/2018/07/06/持续集成：Gogs+Jenkins远程服务器文件同步/index.html">
 <meta property="og:site_name" content="fairymeee">
+<meta property="og:description" content="1. Gogs配置1.1 仓库设置（仓库管理员） 1.2 添加Web钩子 1.3 Web钩子配置  推送地址：http://[jenkins-server]/gogs-webhook/?job=[jenkins的job名称] 密钥文本：jenkins的job需要配置密钥才能连接  2. Jenkins配置2.1 安装插件 Gogs plugin Publish Over SSH   系统管理-&amp;g">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB182IxkyAnBKNjSZFvXXaTKXXa">
+<meta property="og:image" content="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB1Rc.dDeySBuNjy1zdXXXPxFXa">
+<meta property="og:image" content="http://g-search1.alicdn.com/img/bao/uploaded/i4/TB1EVl9kAZmBKNjSZPiXXXFNVXa">
+<meta property="og:image" content="http://g-search1.alicdn.com/img/bao/uploaded/i4/TB1iOXukScqBKNjSZFgXXX_kXXa">
+<meta property="og:image" content="http://g-search2.alicdn.com/img/bao/uploaded/i4/TB1gam_kCMmBKNjSZTEXXasKpXa">
+<meta property="og:image" content="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB1FcJrDxWYBuNjy1zkXXXGGpXa">
+<meta property="og:image" content="http://g-search1.alicdn.com/img/bao/uploaded/i4/TB1n0kYkpkoBKNjSZFEXXbrEVXa">
+<meta property="og:image" content="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB1f9SdksIrBKNjSZK9XXagoVXa">
+<meta property="og:image" content="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB1d8vpktcnBKNjSZR0XXcFqFXa">
+<meta property="og:image" content="http://g-search1.alicdn.com/img/bao/uploaded/i4/TB1uAOYDXmWBuNjSspdXXbugXXa">
+<meta property="og:image" content="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB1SIuhaNtnkeRjSZSgXXXAuXXa">
+<meta property="og:image" content="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB1_npzDxWYBuNjy1zkXXXGGpXa">
+<meta property="og:updated_time" content="2018-07-09T09:22:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="fairymeee">
+<meta name="twitter:title" content="持续集成：Gogs+Jenkins远程服务器文件同步">
+<meta name="twitter:description" content="1. Gogs配置1.1 仓库设置（仓库管理员） 1.2 添加Web钩子 1.3 Web钩子配置  推送地址：http://[jenkins-server]/gogs-webhook/?job=[jenkins的job名称] 密钥文本：jenkins的job需要配置密钥才能连接  2. Jenkins配置2.1 安装插件 Gogs plugin Publish Over SSH   系统管理-&amp;g">
+<meta name="twitter:image" content="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB182IxkyAnBKNjSZFvXXaTKXXa">
 
 
 
@@ -183,13 +200,13 @@
 
 
 
-  <link rel="canonical" href="https://fairymeee.github.io/categories/CI/"/>
+  <link rel="canonical" href="https://fairymeee.github.io/2018/07/06/持续集成：Gogs+Jenkins远程服务器文件同步/"/>
 
 
 
 
 
-  <title>分类: CI | fairymeee</title>
+  <title>持续集成：Gogs+Jenkins远程服务器文件同步 | fairymeee</title>
   
 
 
@@ -208,7 +225,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/fairymeee"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
@@ -348,55 +365,321 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>CI<small>分类</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fairymeee.github.io/2018/07/06/持续集成：Gogs+Jenkins远程服务器文件同步/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fairymeee">
+      <meta itemprop="description" content="走好自己的路，不要停，也别着急！">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fairymeee">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/07/06/持续集成：Gogs+Jenkins同步远程服务器文件/" itemprop="url">
-              
-                <span itemprop="name">持续集成：Gogs+Jenkins同步远程服务器文件</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">持续集成：Gogs+Jenkins远程服务器文件同步</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-06T11:48:39+08:00"
-              content="2018-07-06" >
-          07-06
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-06T11:48:39+08:00">
+                2018-07-06
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/持续集成CI/" itemprop="url" rel="index">
+                    <span itemprop="name">持续集成CI</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/06/持续集成：Gogs+Jenkins远程服务器文件同步/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/07/06/持续集成：Gogs+Jenkins远程服务器文件同步/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/06/持续集成：Gogs+Jenkins远程服务器文件同步/" class="leancloud_visitors" data-flag-title="持续集成：Gogs+Jenkins远程服务器文件同步">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  448
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-Gogs配置"><a href="#1-Gogs配置" class="headerlink" title="1. Gogs配置"></a>1. Gogs配置</h2><h3 id="1-1-仓库设置（仓库管理员）"><a href="#1-1-仓库设置（仓库管理员）" class="headerlink" title="1.1 仓库设置（仓库管理员）"></a>1.1 仓库设置（仓库管理员）</h3><p><img src="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB182IxkyAnBKNjSZFvXXaTKXXa" alt="Git仓库"></p>
+<h3 id="1-2-添加Web钩子"><a href="#1-2-添加Web钩子" class="headerlink" title="1.2 添加Web钩子"></a>1.2 添加Web钩子</h3><p><img src="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB1Rc.dDeySBuNjy1zdXXXPxFXa" alt="web钩子"></p>
+<h3 id="1-3-Web钩子配置"><a href="#1-3-Web钩子配置" class="headerlink" title="1.3 Web钩子配置"></a>1.3 Web钩子配置</h3><p><img src="http://g-search1.alicdn.com/img/bao/uploaded/i4/TB1EVl9kAZmBKNjSZPiXXXFNVXa" alt="webhook配置"></p>
+<blockquote>
+<p>推送地址：http://[jenkins-server]/gogs-webhook/?job=[jenkins的job名称]</p>
+<p>密钥文本：jenkins的job需要配置密钥才能连接</p>
+</blockquote>
+<h2 id="2-Jenkins配置"><a href="#2-Jenkins配置" class="headerlink" title="2. Jenkins配置"></a>2. Jenkins配置</h2><h3 id="2-1-安装插件"><a href="#2-1-安装插件" class="headerlink" title="2.1 安装插件"></a>2.1 安装插件</h3><ul>
+<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/Gogs+Webhook+Plugin" target="_blank" rel="noopener">Gogs plugin</a></li>
+<li><a href="http://wiki.jenkins-ci.org/display/JENKINS/Publish+Over+SSH+Plugin" target="_blank" rel="noopener">Publish Over SSH</a></li>
+</ul>
+<blockquote>
+<p>系统管理-&gt;插件管理-&gt;可选插件，直接搜索，点击“直接安装”即可。</p>
+</blockquote>
+<h3 id="2-2-SSH设置"><a href="#2-2-SSH设置" class="headerlink" title="2.2 SSH设置"></a>2.2 SSH设置</h3><p><img src="http://g-search1.alicdn.com/img/bao/uploaded/i4/TB1iOXukScqBKNjSZFgXXX_kXXa" alt="ssh设置"></p>
+<blockquote>
+<p>系统管理-&gt;系统设置</p>
+</blockquote>
+<h3 id="2-3-新建Job"><a href="#2-3-新建Job" class="headerlink" title="2.3 新建Job"></a>2.3 新建Job</h3><p><img src="http://g-search2.alicdn.com/img/bao/uploaded/i4/TB1gam_kCMmBKNjSZTEXXasKpXa" alt="新建job"></p>
+<blockquote>
+<p>填写job名称，选择“构建一个自由风格的软件项目”</p>
+</blockquote>
+<h3 id="2-4-Job配置"><a href="#2-4-Job配置" class="headerlink" title="2.4 Job配置"></a>2.4 Job配置</h3><ul>
+<li>General</li>
+</ul>
+<p><img src="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB1FcJrDxWYBuNjy1zkXXXGGpXa" alt="General"></p>
+<blockquote>
+<p>项目名称即为job名称，如需更改，请保持gogs web钩子的推送地址中job与此一致</p>
+</blockquote>
+<ul>
+<li>Gogs Webhook</li>
+</ul>
+<p><img src="http://g-search1.alicdn.com/img/bao/uploaded/i4/TB1n0kYkpkoBKNjSZFEXXbrEVXa" alt="Gogs Webhook"></p>
+<blockquote>
+<p>如果gogs web钩子设置了密钥，就需要勾选“Use Gogs secret”，并填写Secret</p>
+</blockquote>
+<ul>
+<li>源码管理</li>
+</ul>
+<p><img src="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB1f9SdksIrBKNjSZK9XXagoVXa" alt="源码管理"></p>
+<blockquote>
+<p>点击“Add”添加账号密码信息，填写Username和Password</p>
+</blockquote>
+<ul>
+<li>构建触发器</li>
+</ul>
+<p><img src="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB1d8vpktcnBKNjSZR0XXcFqFXa" alt="构建触发器"></p>
+<ul>
+<li><p>构建</p>
+<p><strong>选择Send files or execute commands over SSH</strong></p>
+</li>
+</ul>
+<p><img src="http://g-search1.alicdn.com/img/bao/uploaded/i4/TB1uAOYDXmWBuNjSspdXXbugXXa" alt="构建"></p>
+<blockquote>
+<p>“<strong>*</strong>”表示复制当前仓库下所有文件</p>
+</blockquote>
+<p>附脚本（复制，同名则备份）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line">upload_dir=/home/<span class="built_in">test</span>/</span><br><span class="line"></span><br><span class="line">www_dir=/home/test1/</span><br><span class="line"></span><br><span class="line">backupexist()</span><br><span class="line"></span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		filelist=`ls <span class="variable">$1</span>`</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> file <span class="keyword">in</span> <span class="variable">$filelist</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> <span class="built_in">test</span> -f <span class="variable">$1</span><span class="variable">$file</span> </span><br><span class="line"></span><br><span class="line">			<span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">				<span class="keyword">if</span> <span class="built_in">test</span> -f <span class="variable">$2</span><span class="variable">$file</span> </span><br><span class="line"></span><br><span class="line">				<span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">					cp <span class="variable">$2</span><span class="variable">$file</span> <span class="variable">$2</span><span class="variable">$file</span><span class="string">"."</span>`date +%Y-%m-%d`<span class="string">".del"</span></span><br><span class="line"></span><br><span class="line">				<span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">				backupexist <span class="variable">$1</span><span class="variable">$file</span><span class="string">"/"</span> <span class="variable">$2</span><span class="variable">$file</span><span class="string">"/"</span></span><br><span class="line"></span><br><span class="line">			<span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	backupexist <span class="variable">$upload_dir</span> <span class="variable">$www_dir</span></span><br><span class="line"></span><br><span class="line">	cp -R <span class="variable">$upload_dir</span><span class="string">"."</span> <span class="variable">$www_dir</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-测试"><a href="#3-测试" class="headerlink" title="3. 测试"></a>3. 测试</h2><h3 id="1-触发-Web-钩子"><a href="#1-触发-Web-钩子" class="headerlink" title="1. 触发 Web 钩子"></a>1. 触发 Web 钩子</h3><ul>
+<li>测试推送</li>
+</ul>
+<p><img src="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB1SIuhaNtnkeRjSZSgXXXAuXXa" alt="测试推送"></p>
+<ul>
+<li>git push命令触发</li>
+</ul>
+<h3 id="2-Jenkins-Job状态"><a href="#2-Jenkins-Job状态" class="headerlink" title="2. Jenkins Job状态"></a>2. Jenkins Job状态</h3><p><img src="http://g-search3.alicdn.com/img/bao/uploaded/i4/TB1_npzDxWYBuNjy1zkXXXGGpXa" alt="Jenkins Job状态"></p>
+<blockquote>
+<ul>
+<li>蓝色：任务最近一次构建是成功的</li>
+<li>红色：任务最后一次构建是失败的</li>
+<li>黄色：任务最后一次构建表示成功了，但不稳定（主要是因为有失败的测试）</li>
+<li>灰色：任务从未被执行过或被禁用了</li>
+</ul>
+</blockquote>
 
       
     </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
 
+      
+    </div>
+    <div>
+      
+        
+
+      
+    </div>
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    fairymeee
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://fairymeee.github.io/2018/07/06/持续集成：Gogs+Jenkins远程服务器文件同步/" title="持续集成：Gogs+Jenkins远程服务器文件同步">https://fairymeee.github.io/2018/07/06/持续集成：Gogs+Jenkins远程服务器文件同步/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Gogs/" rel="tag"><i class="fa fa-tag"></i> Gogs</a>
+          
+            <a href="/tags/Jenkins/" rel="tag"><i class="fa fa-tag"></i> Jenkins</a>
+          
+            <a href="/tags/CI/" rel="tag"><i class="fa fa-tag"></i> CI</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/07/解决Redis连接异常/" rel="next" title="解决Redis连接异常">
+                <i class="fa fa-chevron-left"></i> 解决Redis连接异常
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -404,6 +687,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -424,8 +718,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -542,6 +845,22 @@
 	</div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Gogs配置"><span class="nav-text">1. Gogs配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-仓库设置（仓库管理员）"><span class="nav-text">1.1 仓库设置（仓库管理员）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-添加Web钩子"><span class="nav-text">1.2 添加Web钩子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Web钩子配置"><span class="nav-text">1.3 Web钩子配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Jenkins配置"><span class="nav-text">2. Jenkins配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-安装插件"><span class="nav-text">2.1 安装插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-SSH设置"><span class="nav-text">2.2 SSH设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-新建Job"><span class="nav-text">2.3 新建Job</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Job配置"><span class="nav-text">2.4 Job配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-测试"><span class="nav-text">3. 测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-触发-Web-钩子"><span class="nav-text">1. 触发 Web 钩子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Jenkins-Job状态"><span class="nav-text">2. Jenkins Job状态</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -692,6 +1011,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -743,6 +1066,30 @@
       </style>
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: '持续集成：Gogs+Jenkins远程服务器文件同步', 
+            owner: 'fairymeee',
+            repo: 'fairymeee.github.io',
+            
+            lang: "en" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '3a06288c0da78e97ce7462da64c35186e3e92fd8',
+            
+                client_id: '978ccb782b3fcbe5dff5'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
