@@ -1,3 +1,3 @@
+https://fairymeee.github.io/2018/07/06/持续集成：Gogs+Jenkins同步远程服务器文件/
 https://fairymeee.github.io/2018/06/07/解决Redis连接异常/
 https://fairymeee.github.io/2018/05/23/NodeJS整合CAS/
-https://fairymeee.github.io/2018/05/07/Ubuntu安装RabbitMQ/
