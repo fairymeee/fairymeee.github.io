@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[持续集成：Gogs+Jenkins远程服务器文件同步]]></title>
+    <url>%2F2018%2F07%2F06%2F%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%EF%BC%9AGogs%2BJenkins%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%2F</url>
+    <content type="text"><![CDATA[1. Gogs配置1.1 仓库设置（仓库管理员） 1.2 添加Web钩子 1.3 Web钩子配置 推送地址：http://[jenkins-server]/gogs-webhook/?job=[jenkins的job名称] 密钥文本：jenkins的job需要配置密钥才能连接 2. Jenkins配置2.1 安装插件 Gogs plugin Publish Over SSH 系统管理-&gt;插件管理-&gt;可选插件，直接搜索，点击“直接安装”即可。 2.2 SSH设置 系统管理-&gt;系统设置 2.3 新建Job 填写job名称，选择“构建一个自由风格的软件项目” 2.4 Job配置 General 项目名称即为job名称，如需更改，请保持gogs web钩子的推送地址中job与此一致 Gogs Webhook 如果gogs web钩子设置了密钥，就需要勾选“Use Gogs secret”，并填写Secret 源码管理 点击“Add”添加账号密码信息，填写Username和Password 构建触发器 构建 选择Send files or execute commands over SSH “*”表示复制当前仓库下所有文件 附脚本（复制，同名则备份）： 1234567891011121314151617181920212223242526272829303132333435363738394041#!/bin/shupload_dir=/home/test/www_dir=/home/test1/backupexist() &#123; filelist=`ls $1` for file in $filelist do if test -f $1$file then if test -f $2$file then cp $2$file $2$file"."`date +%Y-%m-%d`".del" fi else backupexist $1$file"/" $2$file"/" fi done &#125; backupexist $upload_dir $www_dir cp -R $upload_dir"." $www_dir 3. 测试1. 触发 Web 钩子 测试推送 git push命令触发 2. Jenkins Job状态 蓝色：任务最近一次构建是成功的 红色：任务最后一次构建是失败的 黄色：任务最后一次构建表示成功了，但不稳定（主要是因为有失败的测试） 灰色：任务从未被执行过或被禁用了]]></content>
+      <categories>
+        <category>持续集成CI</category>
+      </categories>
+      <tags>
+        <tag>Gogs</tag>
+        <tag>Jenkins</tag>
+        <tag>CI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[解决Redis连接异常]]></title>
+    <url>%2F2018%2F06%2F07%2F%E8%A7%A3%E5%86%B3Redis%E8%BF%9E%E6%8E%A5%E5%BC%82%E5%B8%B8%2F</url>
+    <content type="text"><![CDATA[重新部署项目后，后台服务只要用到了Redis的全都报错，不知道哪里改动了。 报错代码： 123redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool...redis.clients.jedis.exceptions.JedisDataException: ERR Client sent AUTH, but no password is set 解决办法： 进入redis容器(或服务器上) 1docker exec -it my-redis /bin/bash 设置密码 12$ redis-cli127.0.0.1:6379&gt; CONFIG SET requirepass &quot;123456&quot; 修改服务配置 1spring.redis.password=123456 重启后台服务]]></content>
+      <categories>
+        <category>BUG</category>
+      </categories>
+      <tags>
+        <tag>Redis</tag>
+        <tag>Spring boot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[NodeJS整合CAS]]></title>
+    <url>%2F2018%2F05%2F23%2FNodeJS%E6%95%B4%E5%90%88CAS%2F</url>
+    <content type="text"><![CDATA[1 背景子系统使用NodeJS实现，现需把该子系统整合到已实现的CAS系统中，实现统一控制访问。本文只讲述实现过程中所涉及到的内容，其它内容不做深入研究。 基于开源项目： 1https://github.com/TencentWSRD/connect-cas2 2 实现2.1 安装1npm install connect-cas3 --save 这里使用的connect-cas3，也可以直接connect-cas2，可能会有细微的差别。 2.2 涉及特性 非代理模型下的CAS协议的登入、登出 单点登出 2.3 快速开始注意： 务必在使用casClient.core()中间件之前初始化session 如果需要启用单点登出，并且使用了bodyParser，那么必须在bodyParser之前使用casClient中间件。 因为CAS Client接收单点登出的请求需要拿到一个POST请求的RAW body，而在bodyParser之后并没有办法办到这个事情，因为bodyParser已经把请求拦截了。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586var express = require('express');var ConnectCas = require('connect-cas3');var bodyParser = require('body-parser');var session = require('express-session');var cookieParser = require('cookie-parser');var MemoryStore = require('session-memory-store')(session);var app = express();var router = express.Router();app.use(cookie_parser());app.use(session(&#123; secret : 'a long secret',//自定义 name : 'xxxxxxx.sid',//xxxx可替换 resave : true, saveUninitialized : false, store: new MemoryStore() &#125;));var casClient = new ConnectCas(&#123; debug: true, ignore: [], restletIntegration: null, match: [], servicePrefix: 'http://localhost:3000', serverPath: 'https://cas-server:8443/cas', paths: &#123; validate: '/validate', serviceValidate: '/serviceValidate', proxy: '', login: '/login', logout: '/logout', proxyCallback: '' &#125;, redirect: true, gateway: false, renew: false, ssoff: true,// 单点登出配置 slo: true,// connect-cas3内的单点登出开关，但没用上 cache: &#123; enable: false, ttl: 3 * 60 * 1000, filter: [] &#125;, fromAjax: &#123; header: 'x-client-ajax', status: 418 &#125;&#125;);app.use(casClient.core());// 登入app.get(/\/.*/, function (req, res, next) &#123; if (!req.session.cas.user) &#123; return next(); &#125; const username = req.session.cas.user; req.session.loggedIn = true; req.session.username = username; // ... return next();&#125;);// 手动登出router.get('/logout', casClient.logout());// 单点登出，cas服务端发出登出请求// 如果options.ssoff=false，则result=undefinedrouter.post('/logout', function (req, res, next) &#123; if (!req.body.logoutRequest) &#123; next(); return; &#125; var st = req.body.logoutRequest.match(/&lt;samlp:SessionIndex&gt;(.*)&lt;\/samlp:SessionIndex&gt;/)[1]; req.sessionStore.get(st, function (err, result) &#123; if (err) &#123; return; &#125; if (result &amp;&amp; result.sid) req.sessionStore.destroy(result.sid); req.sessionStore.destroy(st); &#125;);&#125;);app.use(body_parser.json());app.use(body_parser.urlencoded(&#123; extended : true &#125;)); 2.4 其它配置请参考connect-cas2配置文档 3 总结3.1 登入匹配所有路径，实现登入中间件，得到cas返回的user等信息，并处理系统登入后的业务。 3.2 登出3.2.1 手动登出使用自带的登出casClient.logout(),下附源码： 123456789101112131415161718192021ConnectCas.prototype.logout = function() &#123; var options = this.options; return function(req, res, next) &#123; if (!req.session) &#123; return res.redirect('/'); &#125; // Forget our own login session if (req.session.destroy) &#123; req.session.destroy(); &#125; else &#123; // Cookie-based sessions have no destroy() req.session = null; &#125; // Send the user to the official campus-wide logout URL // utils.getPath: options.serverPath + options.paths.logout + '?service=' + encodeURIComponent(options.servicePrefix + options.paths.validate); return res.redirect(utils.getPath('logout', options)); &#125;;&#125;; 3.2.2 单点登出单点登出没使用自带的，源码写的应该有个拦截器，监听登出请求。 登出逻辑： 单独写一个登出/logout路由,并注册到CAS服务端 拿到CAS服务端发过来的logoutRequest并从中得到st票据 销毁st票据及session]]></content>
+      <categories>
+        <category>CAS</category>
+      </categories>
+      <tags>
+        <tag>nodejs</tag>
+        <tag>cas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Ubuntu安装RabbitMQ]]></title>
+    <url>%2F2018%2F05%2F07%2FUbuntu%E5%AE%89%E8%A3%85RabbitMQ%2F</url>
+    <content type="text"><![CDATA[1. 安装1.1 添加源1echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list 1.2 新增公钥（不加会有警告）1wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add - 1.3 更新源1sudo apt-get update 1.4 安装rabbitmq-server1sudo apt-get install rabbitmq-server 2. 启动2.1 启动服务1/etc/init.d/rabbitmq-server start Usage: /etc/init.d/rabbitmq-server {start|stop|status|rotate-logs|restart|condrestart|try-restart|reload|force-reload} 2.2 查看服务1systemctl status rabbitmq-server 3. 配置3.1 打开管理页面1sudo rabbitmq-plugins enable rabbitmq_management 3.1.1 查看安装的插件1sudo rabbitmq-plugins list 3.1.2 查看用户1sudo rabbitmqctl list_users 3.2 新增管理员用户12sudo rabbitmqctl add_user admin admin sudo rabbitmqctl set_user_tags admin administrator 3.3 使用新增的账户登陆管理页面http://127.0.0.1:15672]]></content>
+      <categories>
+        <category>AMQP</category>
+      </categories>
+      <tags>
+        <tag>RabbitMQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Ubuntu小技巧]]></title>
+    <url>%2F2018%2F05%2F07%2FUbuntu%E5%B0%8F%E6%8A%80%E5%B7%A7%2F</url>
+    <content type="text"><![CDATA[1. 解决SSH超时断开连接 在客户端电脑上编辑（需要root权限）/etc/ssh/ssh_config，并添加如下一行： ServerAliveInterval 60 此后该系统里的用户连接SSH时，每60秒会发一个KeepAlive请求，避免被踢。 2.解决/boot分区空间不足 查看系统已安装的内核 1dpkg --get-selections|grep linux-image 查看当前使用的内核 1uname -a 删除旧的内核 1sudo apt-get autoremove linux-image-4.13.0-36-generic linux-image-4.13.0-38-generic 可保留最近的两个内核版本，其它可全部删除 查看分区使用情况1df -lh]]></content>
+      <categories>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Markdown常用语法]]></title>
+    <url>%2F2018%2F05%2F06%2FMarkdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[一、Markdown 简明语法手册1. 斜体和粗体使用 * 和 ** 表示斜体和粗体。 示例： 这是 斜体，这是 粗体。 2. 分级标题使用 === 表示一级标题，使用 — 表示二级标题。 示例： 1234567这是一个一级标题============================这是一个二级标题--------------------------------------------------### 这是一个三级标题 你也可以选择在行首加井号表示不同级别的标题 (H1-H6)，例如：# H1, ## H2, ### H3，#### H4。 3. 外链接使用 [描述](链接地址) 为文字增加外链接。 示例： 这是去往 本人博客 的链接。 4. 无序列表使用 *，+，- 表示无序列表。 示例： 无序列表项 一 无序列表项 二 无序列表项 三 5. 有序列表使用数字和点表示有序列表。 示例： 有序列表项 一 有序列表项 二 有序列表项 三 6. 文字引用使用 &gt; 表示文字引用。 示例： 野火烧不尽，春风吹又生。 7. 行内代码块使用 `代码` 表示行内代码块。 示例： 让我们聊聊 html。 8. 代码块使用 四个缩进空格 表示代码块。 示例： 这是一个代码块，此行左侧有四个不可见的空格。 9. 插入图像使用 ![描述](图片链接地址) 插入图像。 示例： 二、Markdown 高阶语法手册1. 删除线使用 ~~ 表示删除线。 这是一段错误的文本。 2. 加强的代码块支持四十一种编程语言的语法高亮的显示，行号显示。 非代码示例： 1$ sudo apt-get install vim-gnome Python 示例： 123456789101112@requires_authorizationdef somefunc(param1='', param2=0): '''A docstring''' if param1 &gt; param2: # interesting print 'Greater' return (param2 - param1 + 1) or Noneclass SomeClass: pass&gt;&gt;&gt; message = '''interpreter... prompt''' JavaScript 示例： 1234567891011121314151617/*** nth element in the fibonacci series.* @param n &gt;= 0* @return the nth element, &gt;= 0.*/function fib(n) &#123; var a = 1, b = 1; var tmp; while (--n &gt;= 0) &#123; tmp = a; a += b; b = tmp; &#125; return a;&#125;document.write(fib(10)); 3. 表格支持 项目 价格 数量 计算机 \$1600 5 手机 \$12 12 管线 \$1 234 4. 定义型列表名词 1: 定义 1（左侧有一个可见的冒号和四个不可见的空格） 代码块 2: 这是代码块的定义（左侧有一个可见的冒号和四个不可见的空格） 代码块（左侧有八个不可见的空格） 5. Html 标签本站支持在 Markdown 语法中嵌套 Html 标签，譬如，你可以用 Html 写一个纵跨两行的表格： &lt;table&gt; &lt;tr&gt; &lt;th rowspan=&quot;2&quot;&gt;值班人员&lt;/th&gt; &lt;th&gt;星期一&lt;/th&gt; &lt;th&gt;星期二&lt;/th&gt; &lt;th&gt;星期三&lt;/th&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;李强&lt;/td&gt; &lt;td&gt;张明&lt;/td&gt; &lt;td&gt;王平&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; 值班人员 星期一 星期二 星期三 李强 张明 王平]]></content>
+      <categories>
+        <category>Markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+</search>
